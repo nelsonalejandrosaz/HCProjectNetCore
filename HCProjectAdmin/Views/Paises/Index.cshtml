@@ -1,0 +1,98 @@
+﻿@model IEnumerable<HCProject.Domain.Pais>
+
+@{
+    ViewData["Title"] = "Lista Países";
+    ViewData["CardTitle"] = "Países";
+}
+
+@section Stylesheets
+{
+    <!-- DataTables -->
+    <link rel="stylesheet" href="~/lib/datatables/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/lib/datatables.net-responsive-bs4/responsive.bootstrap4.min.css">
+}
+
+<div class="row justify-content-between mb-3">
+    <div class="col-3">
+        <a asp-action="Create" class="btn btn-primary btn-block btn-flat"><i class="fa fa-plus-circle"></i> Agregar</a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">@ViewData["CardTitle"]</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <table id="dataTable" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Nombre)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CodigoIso)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CodigoTelefono)
+                            </th>
+                            <th>
+                                Acción
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nombre)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CodigoIso)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CodigoTelefono)
+                                </td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-flat"><i class="fa fa-edit"></i></a>
+                                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-flat"><i class="fa fa-eye"></i></a>
+                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-flat"><i class="fa fa-trash"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->
+
+@section Scripts
+{
+    <!-- DataTables -->
+    <script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="~/lib/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/lib/datatables.net-responsive-bs4/dataTables.responsive.min.js"></script>
+    <script src="~/lib/datatables.net-responsive-bs4/responsive.bootstrap4.min.js"></script>
+
+    <script>
+        $(function () {
+            $('#dataTable').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
+    </script>
+}

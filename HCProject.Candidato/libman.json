@@ -1,0 +1,36 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "jquery@3.5.1",
+      "destination": "wwwroot/lib/jquery/"
+    },
+    {
+      "provider": "filesystem",
+      "library": "Plantillas/sb-ui-kit-pro/dist/css/",
+      "destination": "wwwroot/lib/sb-ui-kit-pro/css/"
+    },
+    {
+      "provider": "filesystem",
+      "library": "Plantillas/sb-ui-kit-pro/dist/js/",
+      "destination": "wwwroot/lib/sb-ui-kit-pro/js"
+    },
+    {
+      "provider": "filesystem",
+      "library": "Plantillas/sb-ui-kit-pro/dist/assets/img",
+      "destination": "wwwroot/lib/sb-ui-kit-pro/assets/img"
+    },
+    {
+      "provider": "filesystem",
+      "library": "Plantillas/sb-admin-pro/dist/css/",
+      "destination": "wwwroot/lib/sb-admin-pro/css/"
+    },
+    {
+      "provider": "filesystem",
+      "library": "Plantillas/sb-admin-pro/dist/js/",
+      "destination": "wwwroot/lib/sb-admin-pro/js"
+    }
+
+  ]
+}

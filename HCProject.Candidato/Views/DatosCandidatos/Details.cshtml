@@ -1,0 +1,129 @@
+﻿@model HCProject.Domain.DatosCandidato
+
+@{
+    ViewData["Title"] = "Mis datos";
+    ViewData["SubTitle"] = "Details";
+    ViewData["CardTitle"] = "Datos personales";
+}
+
+<div class="row">
+    <div class="col-lg-9">
+        <!-- Default Bootstrap Form Controls-->
+        <div id="default">
+            <div class="card mb-4">
+                <div class="card-header">@ViewBag.CardTitle</div>
+                <div class="card-body">
+                    @if (ViewBag.Alerta != null)
+                    {
+                        <partial name="_Alerta" model="@ViewData["Alerta"]" />
+                    }
+                    <!-- Component Preview-->
+                    <div class="sbp-preview">
+                        <div class="sbp-preview-content">
+                            <dl>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Nombres)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Nombres)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Apellidos)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Apellidos)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Email)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Email)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Dui)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Dui)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Nacionalidad)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Nacionalidad)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Genero)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Genero.Nombre)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.FechaNacimiento)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.FechaNacimiento)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.DireccionResidencia)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.DireccionResidencia)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.PaisId)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Municipio.Nombre)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.DepartamentoId)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.MunicipioId)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.MunicipioId)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Municipio.Departamento)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Telefono1)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Telefono1)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Telefono2)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Telefono2)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.PoseeCarro)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.PoseeCarro)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.PoseeLicencia)
+                                </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.PoseeLicencia)
+                                </dd>
+                            </dl>
+                            <div class="row justify-content-between">
+                                <div class="col-3">
+                                    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning btn-block">Editar</a>
+                                </div>
+                                <div class="col-3">
+                                    <a asp-controller="Dashboard" asp-action="Index" class="btn btn-light btn-block">Regresar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+﻿@model HCProject.Candidato.ViewModels.RegistroViewModel;
+@{
+    ViewData["Title"] = "Registrarse";
+    Layout = "_LayoutAuth";
+}
+
+<div class="row justify-content-center">
+    <div class="col-lg-7">
+        <!-- Basic registration form-->
+        <div class="card shadow-lg border-0 rounded-lg mt-5">
+            <div class="card-header justify-content-center"><h3 class="font-weight-light my-4">¡Crea tu cuenta!</h3></div>
+            <div class="card-body">
+                <!-- Registration form-->
+                <form asp-action="Registrarse">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <!-- Form Group (email address) -->
+                    <div class="form-group">
+                        <label asp-for="Email" class="small mb-1"></label>
+                        <input asp-for="Email" class="form-control py-4" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <!-- Form Group (password)-->
+                    <div class="form-group">
+                        <label asp-for="Password" class="small mb-1"></label>
+                        <input asp-for="Password" class="form-control py-4" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <!-- Form Group (confirm password)-->
+                    <div class="form-group">
+                        <label asp-for="ConfirmPassword" class="small mb-1"></label>
+                        <input asp-for="ConfirmPassword" class="form-control py-4" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <!-- Form Group (create account submit)-->
+                    <div class="form-group mt-4 mb-0">
+                        <button type="submit" class="btn btn-primary btn-block">Crear cuenta</button>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer text-center">
+                <div class="small"><a asp-action="Login">¿Ya tienes una cuenta? Ingresa aquí</a></div>
+            </div>
+        </div>
+    </div>
+</div>

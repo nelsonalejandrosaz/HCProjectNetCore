@@ -1,16 +1,16 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Blank Page</title>
+    <title>@ViewData["Title"] | HCProject</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css">
     <!-- Additional CSS -->
-    @RenderSection("Stylesheets", required: false)
+    @await RenderSectionAsync("Stylesheets", required: false)
     <!-- Theme style -->
     <link rel="stylesheet" href="~/lib/admin-lte/css/adminlte.min.css">
 </head>
@@ -139,18 +139,19 @@
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
+
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Blank Page</h1>
+                            <h1>@ViewData["Title"]</h1>
                         </div>
                         <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
+                            <!-- <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
                                 <li class="breadcrumb-item active">Blank Page</li>
-                            </ol>
+                            </ol> -->
                         </div>
                     </div>
                 </div><!-- /.container-fluid -->
@@ -158,15 +159,17 @@
 
             <!-- Main content -->
             <section class="content">
+                <div class="container-fluid">
 
-                @RenderBody()
+                    @RenderBody()
 
+                </div>
             </section>
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
 
-        <footer class="main-footer">
+        <footer class="main-footer no-print">
             <div class="float-right d-none d-sm-block">
                 <b>Version</b> 1.0.0-alfa
             </div>
@@ -177,6 +180,7 @@
     <!-- ./wrapper -->
     <!-- jQuery -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <partial name="_ValidationScriptsPartial" />
     <!-- Bootstrap 4 -->
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
@@ -184,6 +188,6 @@
     <!-- JS App -->
     <script src="~/js/site.js"></script>
     <!-- Additional JS -->
-    @RenderSection("Scripts", required: false)
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

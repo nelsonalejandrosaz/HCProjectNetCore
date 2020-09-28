@@ -1,6 +1,4 @@
-using System;
-
-namespace HCProjectAdmin.Models
+namespace HCProject.Admin.Models
 {
     public class ErrorViewModel
     {

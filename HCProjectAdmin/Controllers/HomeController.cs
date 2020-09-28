@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
+using HCProject.Admin.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using HCProjectAdmin.Models;
 
-namespace HCProjectAdmin.Controllers
+namespace HCProject.Admin.Controllers
 {
     public class HomeController : Controller
     {

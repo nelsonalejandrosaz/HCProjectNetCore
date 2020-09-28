@@ -1,0 +1,16 @@
+﻿@model HCProject.Candidato.ViewModels.AlertaViewModel;
+
+<!-- Alerta -->
+<div class="alert alert-@Model.TipoAlerta alert-icon" role="alert">
+    <button class="close" type="button" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+    <div class="alert-icon-aside">
+        <i class="fa fa-bullhorn"></i>
+    </div>
+    <div class="alert-icon-content">
+        <h6 class="alert-heading">@Model.Titulo</h6>
+        @Model.Mensaje
+    </div>
+</div>
+

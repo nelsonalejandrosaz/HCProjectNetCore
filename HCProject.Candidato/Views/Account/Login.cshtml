@@ -1,0 +1,49 @@
+﻿@model HCProject.Candidato.ViewModels.LoginViewModel;
+@{
+    ViewData["Title"] = "Login";
+    Layout = "_LayoutAuth";
+}
+
+<div class="row justify-content-center">
+    <div class="col-lg-5">
+        <!-- Basic login form-->
+        <div class="card shadow-lg border-0 rounded-lg mt-5">
+            <div class="card-header justify-content-center">
+                <h3 class="font-weight-light my-4">Iniciar sesión</h3>
+            </div>
+            <div class="card-body">
+                <!-- Login form-->
+                <form asp-action="Login">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <!-- Form Group (email address)-->
+                    <div class="form-group">
+                        <label asp-for="Email" class="small mb-1"></label>
+                        <input asp-for="Email" class="form-control py-4" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <!-- Form Group (password)-->
+                    <div class="form-group">
+                        <label asp-for="Password" class="small mb-1">Password</label>
+                        <input asp-for="Password" class="form-control py-4" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <!-- Form Group (remember password checkbox)-->
+                    <div class="form-group">
+                        <div class="custom-control custom-checkbox">
+                            <input asp-for="RememberMe" class="custom-control-input" />
+                            <label asp-for="RememberMe" class="custom-control-label"></label>
+                        </div>
+                    </div>
+                    <!-- Form Group (login box)-->
+                    <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+                        <a class="small" href="#">Forgot Password?</a>
+                        <button type="submit" class="btn btn-primary" href="index.html">Ingresar</button>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer text-center">
+                <div class="small"><a href="auth-register-basic.html">Need an account? Sign up!</a></div>
+            </div>
+        </div>
+    </div>
+</div>

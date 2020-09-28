@@ -1,0 +1,181 @@
+﻿@using System.Security.Claims
+@model HCProject.Domain.DatosCandidato
+
+@{
+    ViewData["Title"] = "Editar mis datos";
+    ViewData["SubTitle"] = "";
+    ViewData["CardTitle"] = "Datos personales";
+}
+
+
+<div class="row">
+    <div class="col-lg-9">
+        <!-- Default Bootstrap Form Controls-->
+        <div id="default">
+            <div class="card mb-4">
+                <div class="card-header">@ViewBag.CardTitle</div>
+                <div class="card-body">
+                    @if (ViewBag.Alerta != null)
+                    {
+                        <partial name="_Alerta" model="@ViewData["Alerta"]" />
+                    }
+                    <!-- Component Preview-->
+                    <div class="sbp-preview">
+                        <div class="sbp-preview-content">
+                            <form asp-action="Edit">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <input asp-for="UserId" value="@User.FindFirstValue(ClaimTypes.NameIdentifier)" hidden />
+                                <div class="form-group">
+                                    <label asp-for="Nombres"></label>
+                                    <input asp-for="Nombres" class="form-control" />
+                                    <span asp-validation-for="Nombres" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Apellidos"></label>
+                                    <input asp-for="Apellidos" class="form-control" />
+                                    <span asp-validation-for="Apellidos" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Email" class="control-label"></label>
+                                    <input asp-for="Email" value="@User.FindFirstValue(ClaimTypes.Name)" readonly class="form-control" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Dui" class="control-label"></label>
+                                    <input asp-for="Dui" class="form-control" />
+                                    <span asp-validation-for="Dui" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Nacionalidad" class="control-label"></label>
+                                    <input asp-for="Nacionalidad" class="form-control" />
+                                    <span asp-validation-for="Nacionalidad" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="GeneroId"></label>
+                                    <select asp-for="GeneroId" class="form-control" asp-items="ViewBag.Generos"></select>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="FechaNacimiento" class="control-label"></label>
+                                    <input asp-for="FechaNacimiento" class="form-control" />
+                                    <span asp-validation-for="FechaNacimiento" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="DireccionResidencia"></label>
+                                    <textarea asp-for="DireccionResidencia" class="form-control"></textarea>
+                                    <span asp-validation-for="DireccionResidencia" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="PaisId" class="control-label"></label>
+                                    <select asp-for="PaisId" class="form-control" asp-items="ViewBag.Paises">
+                                        <option value="">Selecciona una opción</option>
+                                    </select>
+                                    <span asp-validation-for="PaisId" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="DepartamentoId" class="control-label"></label>
+                                    <select asp-for="DepartamentoId" class="form-control" asp-items="ViewBag.Departamentos">
+                                    </select>
+                                    <span asp-validation-for="DepartamentoId" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="MunicipioId" class="control-label"></label>
+                                    <select asp-for="MunicipioId" class="form-control" asp-items="ViewBag.Municipios">
+                                    </select>
+                                    <span asp-validation-for="MunicipioId" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Telefono1" class="control-label"></label>
+                                    <input asp-for="Telefono1" class="form-control" />
+                                    <span asp-validation-for="Telefono1" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Telefono2" class="control-label"></label>
+                                    <input asp-for="Telefono2" class="form-control" />
+                                    <span asp-validation-for="Telefono2" class="text-danger"></span>
+                                </div>
+                                <div class="form-group form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" asp-for="PoseeCarro" /> @Html.DisplayNameFor(model => model.PoseeCarro)
+                                    </label>
+                                </div>
+                                <div class="form-group form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" asp-for="PoseeLicencia" /> @Html.DisplayNameFor(model => model.PoseeLicencia)
+                                    </label>
+                                </div>
+                                <hr />
+                                <div class="row justify-content-between">
+                                    <div class="col-3">
+                                        <input type="submit" value="Guardar" class="btn btn-success btn-block" />
+                                    </div>
+                                    <div class="col-3">
+                                        <a asp-controller="Dashboard" asp-action="Index" class="btn btn-light btn-block">Regresar</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        setTimeout(function () {
+            $('.alert').alert('close');
+        }, 5000);
+
+        // Activando mascara para inputs necesarios
+        //$('#Dui').inputmask("99999999-9");
+        //$('#Nit').inputmask("9999-999999-999-9");
+        //$('#Telefono').inputmask("9999-9999");
+
+        $("#PaisId").on('change', getDepartamentos);
+        $("#DepartamentoId").on('change', getMunicipios);
+
+        function getDepartamentos() {
+            let paisId = $("#PaisId").val();
+            $.ajax({
+                url: `/api/Departamentos?paisId=${paisId}`,
+                contentType: 'application/json',
+                type: 'GET',
+                success: function (data) {
+                    var options = "";
+                    for (var i = 0; i < data.length; i++) {
+                        options += `<option value='${data[i].id}'>${data[i].nombre}</option>`;
+                    }
+                    $("#DepartamentoId").removeAttr("disabled");
+                    $("#DepartamentoId").html(options);
+                },
+                error: function () {
+                    alert('Error de conexión con el servidor.');
+                }
+            });
+        }
+
+        function getMunicipios() {
+            let departamentoId = $("#DepartamentoId").val();
+            $.ajax({
+                url: `/api/Municipios?departamentoId=${departamentoId}`,
+                contentType: 'application/json',
+                type: 'GET',
+                success: function (data) {
+                    var options = "";
+                    for (var i = 0; i < data.length; i++) {
+                        options += `<option value='${data[i].id}'>${data[i].nombre}</option>`;
+                    }
+                    $("#MunicipioId").removeAttr("disabled");
+                    $("#MunicipioId").html(options);
+                },
+                error: function () {
+                    alert('Error de conexión con el servidor.');
+                }
+            });
+        }
+    </script>
+}
