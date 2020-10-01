@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HCProject.Data.Migrations
 {
     [DbContext(typeof(HCProjectDbContext))]
-    [Migration("20200924035852_MigracionInicial")]
-    partial class MigracionInicial
+    [Migration("20200929222457_AgregandroVisibilidad")]
+    partial class AgregandroVisibilidad
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,70 @@ namespace HCProject.Data.Migrations
                 .HasAnnotation("ProductVersion", "3.1.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("HCProject.Domain.AniosExperiencia", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Rango")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AniosExperiencias");
+                });
+
+            modelBuilder.Entity("HCProject.Domain.Curriculo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AniosExperienciaId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DatosCandidatoId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Nombre")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Visibilidad")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AniosExperienciaId");
+
+                    b.HasIndex("DatosCandidatoId");
+
+                    b.ToTable("Curriculos");
+                });
+
+            modelBuilder.Entity("HCProject.Domain.CurriculoHabilidadTecnica", b =>
+                {
+                    b.Property<int>("CurriculoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("HabilidadTecnicaId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Nivel")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CurriculoId", "HabilidadTecnicaId");
+
+                    b.HasIndex("HabilidadTecnicaId");
+
+                    b.ToTable("CurriculoHabilidadTecnicas");
+                });
 
             modelBuilder.Entity("HCProject.Domain.DatosCandidato", b =>
                 {
@@ -142,6 +206,45 @@ namespace HCProject.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Generos");
+                });
+
+            modelBuilder.Entity("HCProject.Domain.HabilidadTecnica", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CurriculoId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CurriculoId");
+
+                    b.ToTable("HabilidadesTecnicas");
+                });
+
+            modelBuilder.Entity("HCProject.Domain.Idioma", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Idiomas");
                 });
 
             modelBuilder.Entity("HCProject.Domain.Municipio", b =>
@@ -387,6 +490,36 @@ namespace HCProject.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("HCProject.Domain.Curriculo", b =>
+                {
+                    b.HasOne("HCProject.Domain.AniosExperiencia", "AniosExperiencia")
+                        .WithMany()
+                        .HasForeignKey("AniosExperienciaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HCProject.Domain.DatosCandidato", "DatosCandidato")
+                        .WithMany()
+                        .HasForeignKey("DatosCandidatoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("HCProject.Domain.CurriculoHabilidadTecnica", b =>
+                {
+                    b.HasOne("HCProject.Domain.Curriculo", "Curriculo")
+                        .WithMany()
+                        .HasForeignKey("CurriculoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HCProject.Domain.HabilidadTecnica", "HabilidadTecnica")
+                        .WithMany()
+                        .HasForeignKey("HabilidadTecnicaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("HCProject.Domain.DatosCandidato", b =>
                 {
                     b.HasOne("HCProject.Domain.Genero", "Genero")
@@ -409,6 +542,13 @@ namespace HCProject.Data.Migrations
                         .HasForeignKey("PaisId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("HCProject.Domain.HabilidadTecnica", b =>
+                {
+                    b.HasOne("HCProject.Domain.Curriculo", null)
+                        .WithMany("HabilidadesTecnicas")
+                        .HasForeignKey("CurriculoId");
                 });
 
             modelBuilder.Entity("HCProject.Domain.Municipio", b =>

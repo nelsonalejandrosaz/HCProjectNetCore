@@ -4,14 +4,16 @@ using HCProject.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HCProject.Data.Migrations
 {
     [DbContext(typeof(HCProjectDbContext))]
-    partial class HCProjectDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200929075838_ModelosIniciales")]
+    partial class ModelosIniciales
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,9 +53,6 @@ namespace HCProject.Data.Migrations
 
                     b.Property<string>("Nombre")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("Visibilidad")
-                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 

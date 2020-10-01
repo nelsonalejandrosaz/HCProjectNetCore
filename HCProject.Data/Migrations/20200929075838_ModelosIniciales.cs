@@ -3,10 +3,23 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HCProject.Data.Migrations
 {
-    public partial class MigracionInicial : Migration
+    public partial class ModelosIniciales : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "AniosExperiencias",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Rango = table.Column<string>(maxLength: 50, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AniosExperiencias", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -58,6 +71,19 @@ namespace HCProject.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Generos", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Idiomas",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nombre = table.Column<string>(maxLength: 50, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Idiomas", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -261,6 +287,78 @@ namespace HCProject.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Curriculos",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nombre = table.Column<string>(nullable: true),
+                    AniosExperienciaId = table.Column<int>(nullable: false),
+                    DatosCandidatoId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Curriculos", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Curriculos_AniosExperiencias_AniosExperienciaId",
+                        column: x => x.AniosExperienciaId,
+                        principalTable: "AniosExperiencias",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Curriculos_DatosCandidatos_DatosCandidatoId",
+                        column: x => x.DatosCandidatoId,
+                        principalTable: "DatosCandidatos",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "HabilidadesTecnicas",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nombre = table.Column<string>(maxLength: 50, nullable: false),
+                    CurriculoId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HabilidadesTecnicas", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_HabilidadesTecnicas_Curriculos_CurriculoId",
+                        column: x => x.CurriculoId,
+                        principalTable: "Curriculos",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CurriculoHabilidadTecnicas",
+                columns: table => new
+                {
+                    CurriculoId = table.Column<int>(nullable: false),
+                    HabilidadTecnicaId = table.Column<int>(nullable: false),
+                    Nivel = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CurriculoHabilidadTecnicas", x => new { x.CurriculoId, x.HabilidadTecnicaId });
+                    table.ForeignKey(
+                        name: "FK_CurriculoHabilidadTecnicas_Curriculos_CurriculoId",
+                        column: x => x.CurriculoId,
+                        principalTable: "Curriculos",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CurriculoHabilidadTecnicas_HabilidadesTecnicas_HabilidadTecnicaId",
+                        column: x => x.HabilidadTecnicaId,
+                        principalTable: "HabilidadesTecnicas",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -301,6 +399,21 @@ namespace HCProject.Data.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_CurriculoHabilidadTecnicas_HabilidadTecnicaId",
+                table: "CurriculoHabilidadTecnicas",
+                column: "HabilidadTecnicaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Curriculos_AniosExperienciaId",
+                table: "Curriculos",
+                column: "AniosExperienciaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Curriculos_DatosCandidatoId",
+                table: "Curriculos",
+                column: "DatosCandidatoId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_DatosCandidatos_GeneroId",
                 table: "DatosCandidatos",
                 column: "GeneroId");
@@ -314,6 +427,11 @@ namespace HCProject.Data.Migrations
                 name: "IX_Departamentos_PaisId",
                 table: "Departamentos",
                 column: "PaisId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_HabilidadesTecnicas_CurriculoId",
+                table: "HabilidadesTecnicas",
+                column: "CurriculoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Municipios_DepartamentoId",
@@ -339,13 +457,28 @@ namespace HCProject.Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "DatosCandidatos");
+                name: "CurriculoHabilidadTecnicas");
+
+            migrationBuilder.DropTable(
+                name: "Idiomas");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "HabilidadesTecnicas");
+
+            migrationBuilder.DropTable(
+                name: "Curriculos");
+
+            migrationBuilder.DropTable(
+                name: "AniosExperiencias");
+
+            migrationBuilder.DropTable(
+                name: "DatosCandidatos");
 
             migrationBuilder.DropTable(
                 name: "Generos");

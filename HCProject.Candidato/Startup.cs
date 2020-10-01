@@ -26,27 +26,18 @@ namespace HCProject.Candidato
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Configurando servicios de EF Core
-            services.AddDbContext<HCProjectDbContext>(options =>
-            {
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
-            });
-            // Configurando servicios de Entity Core
-            services.AddIdentity<IdentityUser, IdentityRole>(options =>
-                {
-                    options.SignIn.RequireConfirmedAccount = false;
-                })
-                .AddEntityFrameworkStores<HCProjectDbContext>();
+            // Registrando servicios de EF Core e Identity
+            services.RegisterDataServices(Configuration);
             // Configurando complejidad del password
-            services.Configure<IdentityOptions>(options =>
-            {
-                // Password settings
-                options.Password.RequireDigit = false;
-                options.Password.RequiredLength = 8;
-                options.Password.RequireNonAlphanumeric = false;
-                options.Password.RequireUppercase = false;
-                options.Password.RequireLowercase = false;
-            });
+            //services.Configure<IdentityOptions>(options =>
+            //{
+            //    // Password settings
+            //    options.Password.RequireDigit = false;
+            //    options.Password.RequiredLength = 8;
+            //    options.Password.RequireNonAlphanumeric = false;
+            //    options.Password.RequireUppercase = false;
+            //    options.Password.RequireLowercase = false;
+            //});
             services.ConfigureApplicationCookie(options =>
             {
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(30);

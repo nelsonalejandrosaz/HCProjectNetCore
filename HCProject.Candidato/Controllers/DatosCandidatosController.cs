@@ -73,7 +73,7 @@ namespace HCProject.Candidato.Controllers
             {
                 _context.Add(datosCandidato);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index","DatosCandidatos");
+                return RedirectToAction("Index","Dashboard");
             }
 
             ViewData["Paises"] = new SelectList(_context.Paises, "Id", "Nombre");
