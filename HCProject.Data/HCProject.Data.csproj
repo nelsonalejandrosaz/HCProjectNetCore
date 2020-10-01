@@ -5,26 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20200922184919_ModelosIniciales.cs" />
-    <Compile Remove="Migrations\20200922184919_ModelosIniciales.Designer.cs" />
-    <Compile Remove="Migrations\20200922190533_MigracionInicial.cs" />
-    <Compile Remove="Migrations\20200922190533_MigracionInicial.Designer.cs" />
-    <Compile Remove="Migrations\20200923064016_MigracionInicial.cs" />
-    <Compile Remove="Migrations\20200923064016_MigracionInicial.Designer.cs" />
-    <Compile Remove="Migrations\20200924035852_MigracionInicial.cs" />
-    <Compile Remove="Migrations\20200924035852_MigracionInicial.Designer.cs" />
-    <Compile Remove="Migrations\20200929060857_MigracionInicial.cs" />
-    <Compile Remove="Migrations\20200929060857_MigracionInicial.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.8" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.8" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.8">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.21" />
   </ItemGroup>
 
   <ItemGroup>
