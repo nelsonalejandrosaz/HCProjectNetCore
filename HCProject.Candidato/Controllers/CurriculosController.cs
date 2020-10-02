@@ -9,6 +9,7 @@ using HCProject.Domain;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace HCProject.Candidato.Controllers
 {
@@ -78,6 +79,7 @@ namespace HCProject.Candidato.Controllers
                 Nombre = curriculo.Nombre,
                 Visibilidad = true
             };
+            ViewData["AniosExperiencia"] = new SelectList(_context.AniosExperiencias.ToList(), "Id", "Rango");
             return View(curriculoViewModel);
         }
 

@@ -2,19 +2,16 @@
 /****** Elaborado por: Nelson Alejandro Saz Rivera  ******/
 
 USE HCProjectDB;
-BEGIN TRANSACTION;
+START TRANSACTION;
 
 -- Paises
-SET IDENTITY_INSERT Paises ON;
 INSERT INTO Paises(Id,Nombre,CodigoIso,CodigoTelefono) VALUES (1,'El Salvador','SV','503');
 INSERT INTO Paises(Id,Nombre,CodigoIso,CodigoTelefono) VALUES (2,'Guatemala','GT','502');
 INSERT INTO Paises(Id,Nombre,CodigoIso,CodigoTelefono) VALUES (3,'Honduras','HN','504');
 INSERT INTO Paises(Id,Nombre,CodigoIso,CodigoTelefono) VALUES (4,'Nicaragua','NI','505');
 INSERT INTO Paises(Id,Nombre,CodigoIso,CodigoTelefono) VALUES (5,'Costa Rica','CR','506');
-SET IDENTITY_INSERT Paises OFF;
 
 -- Departamentos
-SET IDENTITY_INSERT Departamentos ON;
 INSERT INTO Departamentos(Id,Nombre,PaisId) VALUES (1,'Ahuachapán',1);
 INSERT INTO Departamentos(Id,Nombre,PaisId) VALUES (2,'Santa Ana',1);
 INSERT INTO Departamentos(Id,Nombre,PaisId) VALUES (3,'Sonsonate',1);
@@ -29,10 +26,8 @@ INSERT INTO Departamentos(Id,Nombre,PaisId) VALUES (11,'Usulután',1);
 INSERT INTO Departamentos(Id,Nombre,PaisId) VALUES (12,'Morazán',1);
 INSERT INTO Departamentos(Id,Nombre,PaisId) VALUES (13,'San Miguel',1);
 INSERT INTO Departamentos(Id,Nombre,PaisId) VALUES (14,'La Unión',1);
-SET IDENTITY_INSERT Departamentos OFF;
 
 -- Municipios
-SET IDENTITY_INSERT Municipios ON
 INSERT INTO Municipios(Id,Nombre,DepartamentoId) VALUES (1,'Ahuachapán',1);
 INSERT INTO Municipios(Id,Nombre,DepartamentoId) VALUES (2,'San Ildefonso',10);
 INSERT INTO Municipios(Id,Nombre,DepartamentoId) VALUES (3,'San Lorenzo',10);
@@ -295,32 +290,24 @@ INSERT INTO Municipios(Id,Nombre,DepartamentoId) VALUES (259,'Tejutla',5);
 INSERT INTO Municipios(Id,Nombre,DepartamentoId) VALUES (260,'Apopa',6);
 INSERT INTO Municipios(Id,Nombre,DepartamentoId) VALUES (261,'Lislique',14);
 INSERT INTO Municipios(Id,Nombre,DepartamentoId) VALUES (262,'Chiltiupán',4);
-SET IDENTITY_INSERT Municipios OFF
 
 -- Generos
-SET IDENTITY_INSERT Generos ON
 INSERT INTO Generos(Id,Codigo,Nombre) VALUES (1,'X','Prefiero no decir');
 INSERT INTO Generos(Id,Codigo,Nombre) VALUES (2,'F','Femenino');
 INSERT INTO Generos(Id,Codigo,Nombre) VALUES (3,'M','Masculino');
-SET IDENTITY_INSERT Generos OFF
 
-SET IDENTITY_INSERT Idiomas ON
 INSERT INTO Idiomas(Id,Nombre) VALUES (1,'Español');
 INSERT INTO Idiomas(Id,Nombre) VALUES (2,'Inglés');
 INSERT INTO Idiomas(Id,Nombre) VALUES (3,'Portugués');
 INSERT INTO Idiomas(Id,Nombre) VALUES (4,'Francés');
 INSERT INTO Idiomas(Id,Nombre) VALUES (5,'Italiano');
-SET IDENTITY_INSERT Idiomas OFF
 
-SET IDENTITY_INSERT AniosExperiencias ON
 INSERT INTO AniosExperiencias(Id,Rango) VALUES (1,'0 a 1 año');
 INSERT INTO AniosExperiencias(Id,Rango) VALUES (2,'1 a 3 años');
 INSERT INTO AniosExperiencias(Id,Rango) VALUES (3,'3 a 5 años');
 INSERT INTO AniosExperiencias(Id,Rango) VALUES (4,'5 a 10 años');
 INSERT INTO AniosExperiencias(Id,Rango) VALUES (5,'10 años o más');
-SET IDENTITY_INSERT AniosExperiencias OFF
 
-SET IDENTITY_INSERT HabilidadesTecnicas ON
 INSERT INTO HabilidadesTecnicas(Id,Nombre) VALUES (1,'PHP');
 INSERT INTO HabilidadesTecnicas(Id,Nombre) VALUES (2,'.NetCore');
 INSERT INTO HabilidadesTecnicas(Id,Nombre) VALUES (3,'.NetFramework');
@@ -328,6 +315,5 @@ INSERT INTO HabilidadesTecnicas(Id,Nombre) VALUES (4,'HTML5');
 INSERT INTO HabilidadesTecnicas(Id,Nombre) VALUES (5,'Word');
 INSERT INTO HabilidadesTecnicas(Id,Nombre) VALUES (6,'Excel');
 INSERT INTO HabilidadesTecnicas(Id,Nombre) VALUES (7,'PowerPoint');
-SET IDENTITY_INSERT HabilidadesTecnicas OFF
 
-COMMIT TRANSACTION;
+COMMIT;
