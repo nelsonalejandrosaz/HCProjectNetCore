@@ -1,6 +1,6 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using MySql.Data.EntityFrameworkCore.Metadata;
 
 namespace HCProject.Data.Migrations
 {
@@ -13,7 +13,7 @@ namespace HCProject.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Rango = table.Column<string>(maxLength: 50, nullable: false)
                 },
                 constraints: table =>
@@ -65,7 +65,7 @@ namespace HCProject.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Codigo = table.Column<string>(maxLength: 1, nullable: false),
                     Nombre = table.Column<string>(nullable: false)
                 },
@@ -79,7 +79,7 @@ namespace HCProject.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Nombre = table.Column<string>(maxLength: 50, nullable: false)
                 },
                 constraints: table =>
@@ -92,7 +92,7 @@ namespace HCProject.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Nombre = table.Column<string>(maxLength: 50, nullable: false),
                     CodigoIso = table.Column<string>(maxLength: 2, nullable: false),
                     CodigoTelefono = table.Column<string>(nullable: true)
@@ -107,7 +107,7 @@ namespace HCProject.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     RoleId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true)
@@ -128,7 +128,7 @@ namespace HCProject.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     UserId = table.Column<string>(nullable: false),
                     ClaimType = table.Column<string>(nullable: true),
                     ClaimValue = table.Column<string>(nullable: true)
@@ -213,7 +213,7 @@ namespace HCProject.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Nombre = table.Column<string>(maxLength: 50, nullable: false),
                     PaisId = table.Column<int>(nullable: false)
                 },
@@ -233,7 +233,7 @@ namespace HCProject.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Nombre = table.Column<string>(maxLength: 50, nullable: false),
                     DepartamentoId = table.Column<int>(nullable: false)
                 },
@@ -253,7 +253,7 @@ namespace HCProject.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     UserId = table.Column<string>(nullable: false),
                     Nombres = table.Column<string>(maxLength: 50, nullable: false),
                     Apellidos = table.Column<string>(maxLength: 50, nullable: false),
@@ -293,7 +293,7 @@ namespace HCProject.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Nombre = table.Column<string>(nullable: true),
                     Visibilidad = table.Column<bool>(nullable: false),
                     AniosExperienciaId = table.Column<int>(nullable: false),
@@ -321,7 +321,7 @@ namespace HCProject.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Nombre = table.Column<string>(maxLength: 50, nullable: false),
                     CurriculoId = table.Column<int>(nullable: true)
                 },

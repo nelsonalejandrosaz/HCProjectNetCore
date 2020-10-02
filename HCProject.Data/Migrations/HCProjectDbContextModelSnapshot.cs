@@ -25,7 +25,7 @@ namespace HCProject.Data.Migrations
 
                     b.Property<string>("Rango")
                         .IsRequired()
-                        .HasColumnType("varchar(50)")
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
                         .HasMaxLength(50);
 
                     b.HasKey("Id");
@@ -46,10 +46,10 @@ namespace HCProject.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Nombre")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<bool>("Visibilidad")
-                        .HasColumnType("bit");
+                        .HasColumnType("tinyint(1)");
 
                     b.HasKey("Id");
 
@@ -70,7 +70,7 @@ namespace HCProject.Data.Migrations
 
                     b.Property<string>("Nivel")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("CurriculoId", "HabilidadTecnicaId");
 
@@ -87,7 +87,7 @@ namespace HCProject.Data.Migrations
 
                     b.Property<string>("Apellidos")
                         .IsRequired()
-                        .HasColumnType("varchar(50)")
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
                         .HasMaxLength(50);
 
                     b.Property<int>("DepartamentoId")
@@ -95,21 +95,21 @@ namespace HCProject.Data.Migrations
 
                     b.Property<string>("DireccionResidencia")
                         .IsRequired()
-                        .HasColumnType("varchar(120)")
+                        .HasColumnType("varchar(120) CHARACTER SET utf8mb4")
                         .HasMaxLength(120);
 
                     b.Property<string>("Dui")
                         .IsRequired()
-                        .HasColumnType("varchar(10)")
+                        .HasColumnType("varchar(10) CHARACTER SET utf8mb4")
                         .HasMaxLength(10);
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("varchar(100)")
+                        .HasColumnType("varchar(100) CHARACTER SET utf8mb4")
                         .HasMaxLength(100);
 
                     b.Property<DateTime>("FechaNacimiento")
-                        .HasColumnType("datetime");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<int>("GeneroId")
                         .HasColumnType("int");
@@ -119,35 +119,35 @@ namespace HCProject.Data.Migrations
 
                     b.Property<string>("Nacionalidad")
                         .IsRequired()
-                        .HasColumnType("varchar(50)")
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
                         .HasMaxLength(50);
 
                     b.Property<string>("Nombres")
                         .IsRequired()
-                        .HasColumnType("varchar(50)")
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
                         .HasMaxLength(50);
 
                     b.Property<int>("PaisId")
                         .HasColumnType("int");
 
                     b.Property<bool>("PoseeCarro")
-                        .HasColumnType("bit");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<bool>("PoseeLicencia")
-                        .HasColumnType("bit");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("Telefono1")
                         .IsRequired()
-                        .HasColumnType("varchar(50)")
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
                         .HasMaxLength(50);
 
                     b.Property<string>("Telefono2")
-                        .HasColumnType("varchar(50)")
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
                         .HasMaxLength(50);
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
@@ -166,7 +166,7 @@ namespace HCProject.Data.Migrations
 
                     b.Property<string>("Nombre")
                         .IsRequired()
-                        .HasColumnType("varchar(50)")
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
                         .HasMaxLength(50);
 
                     b.Property<int>("PaisId")
@@ -187,12 +187,12 @@ namespace HCProject.Data.Migrations
 
                     b.Property<string>("Codigo")
                         .IsRequired()
-                        .HasColumnType("varchar(1)")
+                        .HasColumnType("varchar(1) CHARACTER SET utf8mb4")
                         .HasMaxLength(1);
 
                     b.Property<string>("Nombre")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
@@ -210,7 +210,7 @@ namespace HCProject.Data.Migrations
 
                     b.Property<string>("Nombre")
                         .IsRequired()
-                        .HasColumnType("varchar(50)")
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
                         .HasMaxLength(50);
 
                     b.HasKey("Id");
@@ -228,7 +228,7 @@ namespace HCProject.Data.Migrations
 
                     b.Property<string>("Nombre")
                         .IsRequired()
-                        .HasColumnType("varchar(50)")
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
                         .HasMaxLength(50);
 
                     b.HasKey("Id");
@@ -247,7 +247,7 @@ namespace HCProject.Data.Migrations
 
                     b.Property<string>("Nombre")
                         .IsRequired()
-                        .HasColumnType("varchar(50)")
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
                         .HasMaxLength(50);
 
                     b.HasKey("Id");
@@ -265,15 +265,15 @@ namespace HCProject.Data.Migrations
 
                     b.Property<string>("CodigoIso")
                         .IsRequired()
-                        .HasColumnType("varchar(2)")
+                        .HasColumnType("varchar(2) CHARACTER SET utf8mb4")
                         .HasMaxLength(2);
 
                     b.Property<string>("CodigoTelefono")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
-                        .HasColumnType("varchar(50)")
+                        .HasColumnType("varchar(50) CHARACTER SET utf8mb4")
                         .HasMaxLength(50);
 
                     b.HasKey("Id");
@@ -284,18 +284,18 @@ namespace HCProject.Data.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("text");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Name")
-                        .HasColumnType("varchar(256)")
+                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
                         .HasMaxLength(256);
 
                     b.Property<string>("NormalizedName")
-                        .HasColumnType("varchar(256)")
+                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
                         .HasMaxLength(256);
 
                     b.HasKey("Id");
@@ -314,14 +314,14 @@ namespace HCProject.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ClaimType")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("ClaimValue")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("RoleId")
                         .IsRequired()
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
@@ -333,53 +333,53 @@ namespace HCProject.Data.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("text");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Email")
-                        .HasColumnType("varchar(256)")
+                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
                         .HasMaxLength(256);
 
                     b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("bit");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("timestamp");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("NormalizedEmail")
-                        .HasColumnType("varchar(256)")
+                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
                         .HasMaxLength(256);
 
                     b.Property<string>("NormalizedUserName")
-                        .HasColumnType("varchar(256)")
+                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
                         .HasMaxLength(256);
 
                     b.Property<string>("PasswordHash")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("PhoneNumber")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("SecurityStamp")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("bit");
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<string>("UserName")
-                        .HasColumnType("varchar(256)")
+                        .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
                         .HasMaxLength(256);
 
                     b.HasKey("Id");
@@ -401,14 +401,14 @@ namespace HCProject.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ClaimType")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("ClaimValue")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
@@ -420,17 +420,17 @@ namespace HCProject.Data.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<string>("ProviderDisplayName")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.HasKey("LoginProvider", "ProviderKey");
 
@@ -442,10 +442,10 @@ namespace HCProject.Data.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
                     b.Property<string>("UserId")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<string>("RoleId")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.HasKey("UserId", "RoleId");
 
@@ -457,16 +457,16 @@ namespace HCProject.Data.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
                     b.Property<string>("UserId")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<string>("Name")
-                        .HasColumnType("varchar(767)");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<string>("Value")
-                        .HasColumnType("text");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 

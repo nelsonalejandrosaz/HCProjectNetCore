@@ -12,7 +12,7 @@ namespace HCProject.Data
             // Configurando servicios de EF Core
             services.AddDbContext<HCProjectDbContext>(options =>
             {
-                options.UseMySQL(configuration.GetConnectionString("DefaultConnection"));
+                options.UseMySql(configuration.GetConnectionString("DefaultConnection"));
             });
             // Configurando servicios de Entity Core
             services.AddIdentity<IdentityUser, IdentityRole>(options =>
